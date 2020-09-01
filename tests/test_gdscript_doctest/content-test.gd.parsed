@@ -5,3 +5,5 @@ Class <unnamed> :
 |   Variable b : Variant
 |   |   = (NOT(element IN arr))
 
+|   Variable c : Variant
+|   |   = (element NOT IN arr)
