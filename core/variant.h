@@ -396,6 +396,7 @@ public:
 		OP_NOT,
 		//containment
 		OP_IN,
+		OP_NOT_IN,
 		OP_MAX
 
 	};

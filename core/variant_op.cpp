@@ -144,6 +144,7 @@
 	TYPES(PREFIX, OP_XOR),                                                                                \
 	TYPES(PREFIX, OP_NOT),                                                                                \
 	TYPES(PREFIX, OP_IN),                                                                                 \
+	TYPES(PREFIX, OP_NOT_IN),                                                                             \
 }
 
 #define SWITCH(PREFIX, op, val) goto *switch_table_##PREFIX[op][val];
@@ -1413,6 +1414,11 @@ void Variant::evaluate(const Operator &p_op, const Variant &p_a,
 		SWITCH_OP(math, OP_IN, p_a.type) {
 			CASE_TYPE_ALL(math, OP_IN)
 			_RETURN(p_b.in(p_a, &r_valid));
+		}
+
+		SWITCH_OP(math, OP_NOT_IN, p_a.type) {
+			CASE_TYPE_ALL(math, OP_NOT_IN)
+			_RETURN(!p_b.in(p_a, &r_valid));
 		}
 	}
 }
@@ -4539,7 +4545,8 @@ static const char *_op_names[Variant::OP_MAX] = {
 	"or",
 	"xor",
 	"not",
-	"in"
+	"in",
+	"not in"
 
 };
 
