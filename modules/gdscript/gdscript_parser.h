@@ -344,6 +344,7 @@ public:
 			OP_LOGIC_OR,
 			OP_TYPE_TEST,
 			OP_CONTENT_TEST,
+			OP_NOT_CONTENT_TEST,
 			OP_COMP_EQUAL,
 			OP_COMP_NOT_EQUAL,
 			OP_COMP_LESS,
@@ -1256,6 +1257,8 @@ private:
 	ExpressionNode *parse_builtin_constant(ExpressionNode *p_previous_operand, bool p_can_assign);
 	ExpressionNode *parse_unary_operator(ExpressionNode *p_previous_operand, bool p_can_assign);
 	ExpressionNode *parse_binary_operator(ExpressionNode *p_previous_operand, bool p_can_assign);
+	// TODO: either special-case for not-in in parse_binary_operator,
+	// or add a new parse_comparison_operator that allows for this two-token operator (and later for a multiary operator a < b <= c)
 	ExpressionNode *parse_ternary_operator(ExpressionNode *p_previous_operand, bool p_can_assign);
 	ExpressionNode *parse_assignment(ExpressionNode *p_previous_operand, bool p_can_assign);
 	ExpressionNode *parse_array(ExpressionNode *p_previous_operand, bool p_can_assign);
